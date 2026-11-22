@@ -8,17 +8,19 @@
 | [README.md](README.md) | Architecture, motivation, and research questions |
 | [cascade_wam/planning.py](cascade_wam/planning.py) | Candidate, score, result, and planner interfaces |
 | [tests/test_planning.py](tests/test_planning.py) | Existing planner behavior and calls to each stage |
+| [Pilot guide](docs/libero-pilot.md) | Runtime setup, collection, training, and report commands |
+| [Improvement plan](docs/world-model-improvements.md) | Ablations and the evidence that would justify each change |
 | [pyproject.toml](pyproject.toml) | Package metadata and test discovery |
 
 ## Start here
 
 | Order | Task | Done when |
 | --- | --- | --- |
-| 1 | Reproduce the frozen π₀.₅ baseline with OpenPI and LIBERO. Pin upstream revisions, document prerequisites, and start with one task and a fixed seed. | A second run can follow the recorded command and recover the same configuration and comparable outcomes. |
-| 2 | Recover the candidate sampler and training artifacts from the earlier prototype. Integrate the smallest runnable pieces with reproducible commands. | The repo can export a real multi-sample candidate pool with recorded observations, seeds, action shapes, timings and checkpoint metadata. |
-| 3 | Verify matched-state collection in LIBERO and implement offline oracle reporting. | The same branch can be replayed from a restored state and candidates can be compared under the same continuation policy and budget. |
-| 4 | Resolve duplicate identity in the planner before relying on candidate counts and score lookups in benchmarks. Clarify the top-k API when wiring results into evaluation. | Duplicate trajectories keep distinct scores and call counts. Tests cover the documented selection or ranking behavior. |
-| 5 | Train light and medium baselines, run the actual-future diagnostic, then add closed-loop comparisons. | Held-out metrics and paired runs quantify retention, reranking gains, task success, and latency. |
+| 1 | Run the [real π₀.₅ sanity check](docs/libero-pilot.md#real-π₀₅-run) on a GPU with checkpoint access. | One task produces a replay-verified shard and the batched adapter matches native inference for the same noise. |
+| 2 | Run the official frozen π₀.₅ LIBERO baseline and collect the matched-state pilot. | Record task IDs, seeds, checkpoint, and timing. The pilot has enough initial conditions and mixed outcomes for grouped evaluation. |
+| 3 | Train both endpoint models and run the actual-future diagnostic. | Report light retention against random pruning and medium gains on identical survivors, with paired effects and source-level uncertainty. |
+| 4 | Choose an ablation using the [improvement plan](docs/world-model-improvements.md). | A held-out development comparison isolates the likely bottleneck and justifies scaling to larger labeled pools. |
+| 5 | Add closed-loop cascade comparisons and profile the complete decision path. | Paired task/seed runs measure success, latency, and peak memory against single-sample π₀.₅, light-only, and all-medium. |
 
 ## Working checks
 

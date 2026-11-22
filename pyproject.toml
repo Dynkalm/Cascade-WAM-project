@@ -8,5 +8,8 @@ version = "0.1.0"
 description = "Hierarchical VLA action selection with lightweight and heavyweight world models"
 requires-python = ">=3.9"
 
+[project.optional-dependencies]
+world-models = ["numpy>=1.26,<3", "torch>=2.6,<3"]
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]

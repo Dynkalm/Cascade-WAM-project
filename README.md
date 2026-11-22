@@ -4,6 +4,10 @@
 
 **Research area:** Vision-Language-Action Models, World Models, Embodied AI, Model-Based Planning, Efficient Inference
 
+## Run the pilot
+
+The repository includes a batched π₀.₅ adapter, matched-state LIBERO collector, light and medium latent predictors, and an offline comparison of recorded versus predicted futures. The [pilot guide](docs/libero-pilot.md) covers setup, the CPU smoke test, and evaluation. The [improvement plan](docs/world-model-improvements.md) uses the diagnostic results to choose ablations.
+
 ## Overview
 
 Cascade-VLA is a research project investigating hierarchical, compute-efficient action selection for robotic manipulation.
