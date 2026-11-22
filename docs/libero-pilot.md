@@ -35,6 +35,8 @@ Use a fresh output directory. The smoke test trains two small versions on analyt
 
 Use Linux, `git`, `uv`, a CUDA-capable GPU for the checkpoint, and an OpenGL backend usable by MuJoCo. The default checkpoint requires `gsutil` and network access to Google Cloud Storage. For a staged checkpoint set `CHECKPOINT` to an absolute path and ensure the upstream PaliGemma tokenizer is reachable or already in the OpenPI cache. Keep the exact checkpoint identifier and runtime for related collection and inference runs. The setup script pins OpenPI and LIBERO, installs the upstream OpenPI lockfile in Python 3.11, and adds simulator packages to that isolated environment.
 
+The pinned runtime passed dependency and import checks. A CPU check verified native OpenPI parity using a small untrained model. A separate LIBERO check verified matched starts and shard export on one initial condition using scripted proposals. The trained-policy commands below still need a GPU run with checkpoint access.
+
 From the repo root:
 
 ```bash

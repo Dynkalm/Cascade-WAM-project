@@ -50,7 +50,6 @@ uv pip install --link-mode copy --python "$runtime_python" \
     'robosuite==1.4.1' 'mujoco==2.3.7' 'bddl==1.0.1' 'easydict==1.13' \
     'cloudpickle>=2.1' 'future>=0.18' 'matplotlib>=3.7' 'gym==0.26.2' \
     'numpy==1.26.4' 'torch==2.7.1' 'transformers==4.53.2' 'jax==0.5.3' 'flax==0.10.2'
-uv pip install --link-mode copy --python "$runtime_python" --no-deps -e "$libero"
 uv pip check --python "$runtime_python"
 
 export LIBERO_CONFIG_PATH="$runtime_root/libero-config"
@@ -59,8 +58,12 @@ import json
 import os
 from pathlib import Path
 import sys
+import sysconfig
 
 libero = Path(sys.argv[1])
+site_packages = Path(sysconfig.get_path("purelib"))
+# The pinned checkout uses a namespace package. Its editable setup does not expose it.
+(site_packages / "cascade_pilot_libero.pth").write_text(str(libero.resolve()) + "\n")
 root = libero / "libero/libero"
 config = Path(os.environ["LIBERO_CONFIG_PATH"]) / "config.yaml"
 config.parent.mkdir(parents=True, exist_ok=True)

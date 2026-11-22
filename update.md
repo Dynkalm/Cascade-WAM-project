@@ -4,7 +4,8 @@
 
 - Integrated batched candidate generation, matched-state collection, light and medium training, and offline inference. Added recorded-versus-predicted future scoring and paired selection effects.
 - Added pinned runtime setup, pilot commands, and a failure-driven model improvement plan. Fixed the small unranked export argument check.
-- Verified the repo test suite and both stages of the synthetic CPU smoke test. The synthetic cascade matched light-only top-1 selection and pruned successful candidates more often than the random baseline. Real model and simulator results remain pending.
+- Verified all 15 repo tests and both stages of the synthetic CPU smoke test. The synthetic cascade matched light-only top-1 selection and pruned successful candidates more often than the random baseline.
+- Verified installation of the pinned runtime, native OpenPI parity with a small untrained CPU model, and branch replay in LIBERO with scripted proposals. Trained π₀.₅ inference and LIBERO ranking results remain pending.
 
 ### Earlier on 2026-11-23
 

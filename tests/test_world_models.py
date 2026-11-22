@@ -120,6 +120,7 @@ def test_exact_random_subset_baseline():
         y[list(c)[np.argmax(h[list(c)])]] for c in itertools.combinations(range(4), 2)
     ]
     assert random_m_heavy(y, h, 2) == pytest.approx(np.mean(outcomes))
+    assert random_m_heavy(np.ones(256, dtype=np.float32), np.arange(256), 128) == 1.0
     rows = group_table(np.zeros(4), np.array(["x"] * 4), h, h, 2)
     assert rows[0]["light_retains_any_success"] is None
 

@@ -32,12 +32,12 @@ def random_m_heavy(labels, heavy, m):
     m = min(m, n)
     order = np.argsort(-heavy, kind="stable")
     den = math.comb(n, m)
-    return float(
-        sum(
-            labels[order[r]] * math.comb(n - r - 1, m - 1) / den
-            for r in range(n - m + 1)
-        )
+    successful_subsets = sum(
+        math.comb(n - rank - 1, m - 1)
+        for rank in range(n - m + 1)
+        if labels[order[rank]]
     )
+    return successful_subsets / den
 
 
 def group_table(labels, groups, light, medium, keep, *, actual_futures=None):
