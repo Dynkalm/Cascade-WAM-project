@@ -9,7 +9,7 @@ Cascade-VLA studies whether a lightweight, action-conditioned world model can fi
 3. Rerank those **M** candidates with the medium model and execute the selected chunk or a fixed prefix. Obtain a new observation and replan. Keep the execution horizon and replanning policy fixed across methods.
 4. In the benchmark only, restore the same simulator state for every alternative. Execute the candidate, then use a fixed π₀.₅ continuation policy with a documented budget and seed protocol. Label each branch with actual task success under that protocol. Use these outcomes for training, evaluation, and an offline oracle upper bound.
 
-The first controlled configuration uses **K=256**, **M=16**, and a 10-step action chunk. Keep these as configurable starting points. The initial lightweight and medium training prototypes use approximately **8.8M** and **49.9M** trainable parameters, respectively, excluding the frozen encoder. Both predict an endpoint in frozen feature space and learn task-success and within-pool ranking signals. Use this pair for the first comparison and treat model capacity, feature quality, and practical GPU cost as experimental questions.
+The control uses **K=256**, **M=16**, and a 10-step action chunk. The lightweight and medium controls use approximately **8.8M** and **49.9M** trainable parameters, respectively, excluding the frozen encoder. Both predict an endpoint in frozen feature space and learn task-success and within-pool ranking signals. The [scaling comparisons](docs/world-model-improvements.md#candidate-pool-scale) extend the proposed K range to **4,096** and test larger rerankers up to **266.7M** parameters.
 
 ## Milestones and exit checks
 

@@ -2,6 +2,7 @@
 
 ## 2026-11-23
 
+- Added a scaling comparison for 256, 1,024 and 4,096 proposals and larger endpoint predictors. The 23.6M, 151.6M and 266.7M configurations passed CPU forward checks on synthetic inputs. A stub sampler verified 4,096-candidate batching and the nested 256-candidate prefix. Trained-policy diversity, latency, and ranking at these sizes remain unmeasured.
 - Integrated batched candidate generation, matched-state collection, light and medium training, and offline inference. Added recorded-versus-predicted future scoring and paired selection effects.
 - Added pinned runtime setup, pilot commands, and a failure-driven model improvement plan. Fixed the small unranked export argument check.
 - Verified all 15 repo tests and both stages of the synthetic CPU smoke test. The synthetic cascade matched light-only top-1 selection and pruned successful candidates more often than the random baseline.
