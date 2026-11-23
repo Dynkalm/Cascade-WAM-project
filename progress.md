@@ -6,7 +6,7 @@ The Python planner, batched world models, and offline LIBERO pilot are integrate
 
 | Needed change | Status | Evidence and remaining work |
 | --- | --- | --- |
-| Project plan and handoff | Complete | [Project plan](Project.md), [change log](update.md), [task directory](Agents.md), and the [pilot guide](docs/libero-pilot.md) describe the workflow. |
+| Project plan and handoff | Complete | [Project plan](Project.md), [change log](update.md), [repository guide](AGENTS.md), and the [pilot guide](docs/libero-pilot.md) describe the workflow. |
 | Two-stage planner | Implemented and unit-tested | The generic planner handles per-candidate scorers. The batched inference path preserves candidate indices and calls medium only on the survivors. |
 | Candidate identity and ranking API | Open in the generic planner | Duplicate trajectory keys can overwrite its score entries. The batched path tracks original indices. Clarify the generic `top_k` behavior when integrating a closed-loop consumer. |
 | Reproducible OpenPI/LIBERO baseline | Pinned runtime verified | Dependency and import checks passed. The adapter matched native batched outputs with a small untrained OpenPI model on CPU. Run the official single-policy baseline and matched-noise parity with the trained checkpoint. |
